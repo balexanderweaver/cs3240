@@ -31,7 +31,10 @@ public class Controller {
             
             if (!comm.isConnected()) {
             	claw.rotate(100);
+            } else {     	
+            	// not connected, check for messages
             }
+            
             if (comm.hasMessage()) {
             	
             	message = comm.getMessage();
@@ -90,11 +93,9 @@ public class Controller {
             	
             	ack.pairs.add(new String[]{"done", command});
             	comm.sendMessage(ack);
-            			
-            	
-            	
-            
-            
+                 
+            } else {    
+            	continue; // queue is empty, terminate loop iteration
             }
         }
     }
